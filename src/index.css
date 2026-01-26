@@ -1,0 +1,100 @@
+@import 'tailwindcss';
+
+/* Custom theme variables */
+@theme {
+  --color-brand-purple: #775ED0;
+  --color-brand-blue: #5C7AEA;
+  --color-brand-cyan: #00D4FF;
+  --color-dark-purple: #5C3ACD;
+  --color-dark-blue: #7A4DE8;
+  --color-dark-cyan: #00B8FF;
+}
+
+/* Custom utility classes */
+.gradient-text-light {
+  background: linear-gradient(135deg, #775ED0, #5C7AEA, #00D4FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-dark {
+  background: linear-gradient(135deg, #5C3ACD, #7A4DE8, #00B8FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.btn-gradient-light {
+  background: linear-gradient(135deg, #775ED0, #5C7AEA, #00D4FF);
+}
+
+.btn-gradient-dark {
+  background: linear-gradient(135deg, #5C3ACD, #7A4DE8, #00B8FF);
+}
+
+.bg-gradient-light {
+  background: linear-gradient(135deg, #775ED0, #5C7AEA, #00D4FF);
+}
+
+.bg-gradient-dark {
+  background: linear-gradient(135deg, #5C3ACD, #7A4DE8, #00B8FF);
+}
+
+.hover-gradient-light:hover {
+  background: linear-gradient(135deg, #8B6DE5, #6B8CFF, #00E4FF);
+}
+
+.hover-gradient-dark:hover {
+  background: linear-gradient(135deg, #6D4AE8, #8C60FF, #00D0FF);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #374151;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--color-brand-purple), var(--color-brand-blue));
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #6D28D9, #3B82F6);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.5s ease-out;
+}
