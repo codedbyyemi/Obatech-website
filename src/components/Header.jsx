@@ -4,11 +4,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import logoImage from '../assets/logo.png';
+import { useTheme } from '../context/ThemeContext';
 
-
-const Header = ({ theme, toggleTheme }) => {
+const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { theme, toggleTheme } = useTheme(); // Add toggleTheme here
 
   const navItems = [
     { path: '/', label: 'Home' },
@@ -51,16 +52,18 @@ const Header = ({ theme, toggleTheme }) => {
               </span>
             </Link>
           </motion.div>
+          
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className={`relative px-1 py-2 text-sm font-medium transition-colors ${location.pathname === item.path
+                className={`relative px-1 py-2 text-sm font-medium transition-colors ${
+                  location.pathname === item.path
                     ? 'text-brand-purple dark:text-blue-400'
                     : 'text-gray-600 dark:text-gray-300 hover:text-brand-purple dark:hover:text-blue-400'
-                  }`}
+                }`}
               >
                 {item.label}
                 {location.pathname === item.path && (
@@ -71,12 +74,12 @@ const Header = ({ theme, toggleTheme }) => {
                 )}
               </Link>
             ))}
-            <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+            <ThemeToggle />
           </nav>
 
           {/* Mobile menu button */}
           <div className="flex items-center md:hidden space-x-4">
-            <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+            <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
@@ -102,10 +105,11 @@ const Header = ({ theme, toggleTheme }) => {
                     key={item.path}
                     to={item.path}
                     onClick={() => setIsOpen(false)}
-                    className={`block px-3 py-2 rounded-md text-base font-medium ${location.pathname === item.path
+                    className={`block px-3 py-2 rounded-md text-base font-medium ${
+                      location.pathname === item.path
                         ? 'bg-gradient-light dark:bg-gradient-dark text-white'
                         : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
-                      }`}
+                    }`}
                   >
                     {item.label}
                   </Link>
